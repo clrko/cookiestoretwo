@@ -7,11 +7,11 @@ const recipe = require("./src/routes/recipe.js")
 
 const app = express()
 
-/* Middleware morgan pour voir l7activité du serveur qui se lance au lancement d'une requete*/
+/* Middleware morgan pour voir l'activité du serveur au lancement d'une requete*/
 app.use(morgan("dev"))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use("/recipe", recipe) /* si un user demande à aller dans /recipe, redirige le vers le fichier recipe.js */
+app.use("/recipe", recipe) /* si un user demande à aller dans /recipe, redirige vers le fichier recipe.js */
 
 /* creation route*/
 app.get("/", (req, res) => {
