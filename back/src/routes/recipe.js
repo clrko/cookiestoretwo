@@ -34,14 +34,47 @@ Router.post("/addRecipe", (req, res) => {
     // res.send("I am on  Get '/recipe/showRecipeList'")
 })
 
+/* Pour avoir une ligne id correpsond à un apramtere, on aurait pu mettre poulet. ça correspond à la key. Params va retourner un objet. */
+Router.get("/showRecipeList/:id", (req, res) => {
+    console.log("REQ PARAMS", req.params.id)
+    const id = req.params.id
+    const sql = "SELECT * FROM cookieRecipe WHERE id = ?"
+    const values = [id]
+    connection.query(sql, values, (err, result) => {
+        if (err) throw err
+        return res.status(200).send(result[0])
+    })
+})
+
 /* Update des data */
-Router.put("/updateRecipe", (req, res) => {
-    // res.send("I am on  Get '/recipe/showRecipeList'")
+Router.put("/updateRecipe/:id", (req, res) => {
+    console.log("REQ BODY", req.body)
+    console.log("REQ PARAMS", req.params)
+    const id = req.params.id
+    const sql = "UPDATE cookieRecipe SET name = ?, ingredient = ?, description = ?, tools = ? WHERE id = ?" 
+    const values = [
+        req.body.name, 
+        req.body.ingredient,
+        req.body.description,
+        req.body.tools,
+        id
+    ]
+    connection.query(sql, values, (err, result) => {
+        if (err) throw err
+        return res.status(200).send(result)
+    })
 })
 
 /* Delete des data */
-Router.delete("/deleteRecipe", (req, res) => {
-    // res.send("I am on  Get '/recipe/showRecipeList'")
+Router.delete("/deleteRecipe/:id", (req, res) => {
+    console.log("REQ PARAMS", req.params)
+    const id = req.params.id
+    const sql = "DELETE FROM cookieRecipe WHERE id = ?"
+    const values = [id]
+    connection.query(sql, values, (err, result) => {
+        if (err) throw err
+        return res.status(200).send(result)
+    })
 })
 
 
