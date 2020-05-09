@@ -16,6 +16,18 @@ Router.get("/showRecipeList", (req, res) => {
     // res.send("I am on  Get '/recipe/showRecipeList'")
 })
 
+/* Recupérer les data d'une ligne précise */
+Router.get("/showRecipeList/:id", (req, res) => {
+    console.log("REQ PARAMS", req.params.id)
+    const id = req.params.id
+    const sql = "SELECT * FROM cookieRecipe WHERE id = ?"
+    const values = [id]
+    connection.query(sql, values, (err, result) => {
+        if (err) throw err
+        return res.status(200).send(result[0])
+    })
+})
+
 /* envoyer des data */
 Router.post("/addRecipe", (req, res) => {
     console.log("req BODY", req.body)
@@ -34,17 +46,7 @@ Router.post("/addRecipe", (req, res) => {
     // res.send("I am on  Get '/recipe/showRecipeList'")
 })
 
-/* Pour avoir une ligne id correpsond à un apramtere, on aurait pu mettre poulet. ça correspond à la key. Params va retourner un objet. */
-Router.get("/showRecipeList/:id", (req, res) => {
-    console.log("REQ PARAMS", req.params.id)
-    const id = req.params.id
-    const sql = "SELECT * FROM cookieRecipe WHERE id = ?"
-    const values = [id]
-    connection.query(sql, values, (err, result) => {
-        if (err) throw err
-        return res.status(200).send(result[0])
-    })
-})
+
 
 /* Update des data */
 Router.put("/updateRecipe/:id", (req, res) => {
