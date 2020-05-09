@@ -24,8 +24,8 @@ class AllRecipes extends Component {
         const tabRecipes = this.state.recipe.map((value, key) => {
             return (
                 <div className="recipeContainer" key={key} >
-                    <div className="recipeValues">{value.name}</div>
                     <div className="recipeValues">{value.id}</div>
+                    <div className="recipeValues">{value.name}</div>
                     <div className="recipeValues">{value.ingredient}</div>
                     <div className="recipeValues">{value.description}</div>
                 </div>
