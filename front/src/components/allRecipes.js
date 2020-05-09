@@ -23,17 +23,17 @@ class AllRecipes extends Component {
 
         const tabRecipes = this.state.recipe.map((value, key) => {
             return (
-                <div className="" key={key} >
-                    <div>{value.id}</div>
-                    <div>{value.name}</div>
-                    <div>{value.ingredient}</div>
-                    <div>{value.description}</div>
+                <div className="recipeContainer" key={key} >
+                    <div className="recipeValues">{value.name}</div>
+                    <div className="recipeValues">{value.id}</div>
+                    <div className="recipeValues">{value.ingredient}</div>
+                    <div className="recipeValues">{value.description}</div>
                 </div>
             )
         })
-        
+
         return (
-            <div>{tabRecipes}</div>
+            <div className="globalForm">{tabRecipes}</div>
         )
     }
 }
