@@ -10,6 +10,11 @@ class AddRecipes extends React.Component {
         success: false,
     }
 
+    handleChange = event => {
+        this.setState({[event.target.name]: event.target.value })
+        // console.log("this.state.name", this.state.name)
+    }
+
     handleSubmit = event => {
         event.preventDefault()
         console.log("affiche la state", this.state)
