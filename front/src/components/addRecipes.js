@@ -18,6 +18,15 @@ class AddRecipes extends React.Component {
     handleSubmit = event => {
         event.preventDefault()
         console.log("affiche la state", this.state)
+        axios.post(`http://localhost:3030/recipe/addRecipe`, {
+            name: event.target.name.value,
+            ingredient: event.target.ingredient.value,
+            description: event.target.description.value,
+            tools: event.target.name.value
+        })
+        .then(() => {
+            this.setState({success: true})
+        })
     }
 
     render() {
@@ -58,7 +67,7 @@ class AddRecipes extends React.Component {
 
                 <input type="submit" value="Submit" />
             </form>
-            {/* {this.state.success ? <p>ok</p> : null } */}
+            {this.state.success ? <p>ok</p> : null }
         </div>
         )
     }

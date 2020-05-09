@@ -6,8 +6,8 @@ import './App.css';
 function App() {
   return (
     <div className="globalForm">
-      {/* <AllRecipes /> */}
-      <AddRecipes />
+      <AllRecipes />
+      {/* AddRecipes /> */}
     </div>
   );
 }
